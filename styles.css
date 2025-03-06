@@ -27,38 +27,42 @@ body{
     background-color: var(--SECONDARY-COLOR);
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 header{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-bottom: 120px;
+    margin: clamp(40px,10vw,100px) auto;
 }
 .img-text-wrapper{
     position: relative;
+
 }
 .img-text-wrapper img{
+    max-width: 100%;
+    height: auto;
     box-shadow: 10px 6px 10px rgba(0, 0, 0, 0.1);
 }
 .img-text-wrapper h1{
     position: absolute;
     bottom: 10px;
     left: 10px;
-    font-size: 40px;
+    font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
 .about-me{
     display: flex;
     flex-direction: column;
     background-color: var(--SECONDARY-COLOR);
-    width: 900px;
-    height: 450px;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
     box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.1);
     padding: 25px;
+    position: relative;
 }
 .about-me h2{
     font-size: 30px;
@@ -71,13 +75,15 @@ header{
 }
 .social-media{
     display: flex;
-    justify-content: flex-end;
     align-items:center;
     margin: 10px;
-    align-self: flex-end;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 .social-media a{
     text-decoration: none;
+    display: inline-block;
 }
 .social-media img{
     width: 30px;
@@ -90,9 +96,8 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 120px;
-    margin-right: 120px;
-    margin-bottom: 120px;
+    margin: 0 auto;
+    max-width: 90%;
 }
 main h2{
     font-size: 30px;
@@ -109,24 +114,28 @@ main h2{
     flex-direction: column;
     align-items: center;
     background-color: var(--SECONDARY-COLOR);
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;
     box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.1);
 }
 .achievements img{
-    width: 400px;
-    height: 300px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 16/9;
 }
 .title-link-wrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 10px;
+    padding: clamp(10px, 2vw, 20px);
 }
 .achievement p{
     font-size: 16px;
-    margin: 14px;
-    margin-bottom: 40px;
+    padding: 0 clamp(10px, 2vw, 20px);
+    line-height: 24px;
 }
 
 .achievement a>img{
@@ -140,9 +149,13 @@ footer{
     background-color: var(--MAIN-COLOR);
     display: flex;
     justify-content: center;
+    box-shadow: 0px -10px 8px rgba(0, 0, 0, 0.1);
     align-items: center;
     gap: 30px;
     height: 500px;
+    width: 100vw;
+    padding: 20px 5%;
+    margin-top: 100px;
 }
 
 footer p{
@@ -155,8 +168,6 @@ footer p{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 120px;
-    margin: 10px;
 }
 
 .footer-text h3{
@@ -184,9 +195,21 @@ footer p{
 }
 
 footer img{
-    width: 650px;
+    /* width: 100%;
+    height: auto;
+    box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.1); */
+}
+.img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 650px;
+    height: auto;
+}
+
+.img-wrapper img{
+    width: 100%;
     box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.1);
-    margin-right: 120px;
 }
 
 .social-media-footer{
@@ -194,4 +217,120 @@ footer img{
     margin-top: 15px;
     align-items: center;
     gap: 20px;
+}
+
+@media (max-width: 1000px){
+    header{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    footer{
+        padding: 10px 3%;
+        gap: 20px;
+    }
+    .achievements{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .achievement{
+        max-width: 300px;
+        min-height: 300px;
+    }
+    .about-me{
+        max-width: 600px;
+    }
+    .img-text-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .img-text-wrapper h1{
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .img-text-wrapper img{
+        max-width: 70%;
+        height: auto;
+    }
+    .img-wrapper{
+        min-width: 350px;
+        min-height: 400px;
+
+    }
+    .img-wrapper img{
+        width: 100%;
+        height: auto;
+
+    }
+    .footer-text h3{
+        font-size: 25px;
+    }
+    .footer-text> p{
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    .footer-text img{
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+
+}
+
+@media (max-width: 600px){
+    header{
+        margin:15px 0;
+    }
+    .about-me{
+        width: 100%;
+        padding: 20px;
+    }
+    .achievements{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .achievement{
+        max-width: 100%;
+        min-height: 300px;
+        padding-bottom: 10px;
+    }
+    .about-me{
+        max-width: 100%;
+    }
+    .img-text-wrapper img{
+        max-width: 70%;
+        height: auto;
+    }
+    .img-text-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .img-text-wrapper h1{
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .img-wrapper{
+        min-width: 300px;
+        min-height: 300px;
+    }
+    footer{
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        margin-top: 50px;
+    }
+    .footer-text{
+        margin-top: 10px;
+        align-self: flex-start;
+        width: 100%;
+    }
+    .social-media-footer{
+        margin-top: 10px;
+        align-self: flex-end;
+    }
 }
